@@ -1,4 +1,4 @@
-// package Graph;
+package in.edu.scse.XIM.graph;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -6,13 +6,13 @@ import java.util.Scanner;
 import java.util.Stack;
 import java.util.Vector;
 
-public class Graph1 {
+public class Graph {
 
     private LinkedList<Integer> adj[];
     private int v;
     private int[][] dir;
 
-    public Graph1(int v) {
+    public Graph(int v) {
         adj = new LinkedList[v];
         for (int i = 0; i < v; i++) {
             adj[i] = new LinkedList<Integer>();
@@ -26,27 +26,28 @@ public class Graph1 {
 
     // A utility function to delete an edge in an undirected graph.
     static void delEdge(Vector<Integer> adj[], int u, int v)
-{
-// Traversing through the first vector list and removing the second element from it
-for (int i = 0; i < adj[u].size(); i++)
-{
-if (adj[u].get(i) == v)
-{
-adj[u].remove(i);
-}
+	{
+	// Traversing through the first vector list and removing the second element from it
+	for (int i = 0; i < adj[u].size(); i++)
+	{
+		if (adj[u].get(i) == v)
+		{
+			adj[u].remove(i);
+		}
+	
+	}
+	}
 
-}
-
-    public void addVertex(int x) {
+    public void addVertex(int k) {
         int i;
-        int n;
+        int n=0;
         // increasing the number of vertices
         n++;
-        int i;
+        //int i;
 
         // initializing the new elements to 0
         for (i = 0; i < n; ++i) {
-            int[][] g;
+            int[][] g =new int[n][n];
             g[i][n - 1] = 0;
             g[n - 1][i] = 0;
         }
@@ -59,19 +60,19 @@ adj[u].remove(i);
     public void removeVertex(int x) {
         int i;
         extracted();
-        int n;
+        int n=0;
         // checking if the vertex is present
         if (x > n) {
             System.out.println("Vertex not present!");
             return;
         } else {
-            int i;
+            //int i;
             extracted();
 
             // removing the vertex
             while (x < n) {
 
-                Object[][] g;
+                Object[][] g=new Object[x][x];
                 // shifting the rows to left side
                 for (i = 0; i < n; ++i) {
                     g[i][x] = g[i][x + 1];
@@ -193,7 +194,7 @@ adj[u].remove(i);
         int v = sc.nextInt();
         int e = sc.nextInt();
 
-        Graph1 graph = new Graph1(v);
+        Graph graph = new Graph(v);
         System.out.println("Enter " + e + " edges");
         for (int i = 0; i < e; i++) {
             int source = sc.nextInt();
